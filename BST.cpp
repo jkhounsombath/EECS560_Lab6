@@ -21,6 +21,7 @@ void BST::add(int entry)
 	}
 	else
 	{
+		std::cout <<"2";
 		recAdd(entry, m_root);
 	}
 }
