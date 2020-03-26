@@ -26,11 +26,7 @@ void BST::add(int entry)
 }
 void BST::recAdd(int entry, BNode<int>* curSubTree)
 {
-	if(curSubTree == nullptr)
-	{
-		curSubTree= new BNode<int>(entry);
-	}
-	else if(curSubTree->getEntry() > entry)
+	if(curSubTree->getEntry() > entry)
 	{
 		if(curSubTree->getLeft() == nullptr)
 		{
