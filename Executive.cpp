@@ -2,6 +2,7 @@
 
 Executive::Executive()
 {
+	bst= new BST();
 	std::ifstream inFile("data.txt");
 	int value = 0;
 	while(inFile>>value)
@@ -9,6 +10,7 @@ Executive::Executive()
 		std::cout<<"Adding value: "<<value<<std::endl;
 		bst->add(value);
 	}
+	bst->print();
 }
 
 Executive::~Executive()
