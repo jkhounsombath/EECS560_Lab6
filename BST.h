@@ -24,6 +24,6 @@ class BST
 */
 	private:
 		int size = 0;
-		BNode* m_root;
+		BNode* m_root= nullptr;
 };
 #endif
