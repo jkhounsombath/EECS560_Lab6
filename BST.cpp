@@ -7,26 +7,23 @@ BST::BST()
 
 BST::~BST()
 {
-	//recDelete(m_root);
+	recDelete(m_root);
 }
 
 void BST::add(int entry)
 {
-	std::cout<<"1\n";
 	if(m_root == nullptr)
 	{
-		std::cout<<"3\n";
 		BNode<int>* newNode= new BNode<int>(entry);
 		m_root= newNode;
 		newNode= nullptr;
 	}
 	else
 	{
-		std::cout<<"2\n";
-		//recAdd(entry, m_root);
+		recAdd(entry, m_root);
 	}
 }
-/*
+
 void BST::recDelete(BNode<int>* curTree)
 {
 	if(curTree != nullptr)
@@ -43,7 +40,7 @@ void BST::recAdd(int entry, BNode<int>* curSubTree)
 	{
 		curSubTree= new BNode<int>(entry);
 	}
-	else if(curSubTree->getEntry() > entry)
+	else if(curSubTree->getEntry() >= entry)
 	{
 		if(curSubTree->getLeft() == nullptr)
 		{
@@ -127,4 +124,3 @@ BNode<int>* BST::removeHelper(int entry, BNode<int>* curSubTree)
 	}
 	return(curSubTree);
 }
-*/

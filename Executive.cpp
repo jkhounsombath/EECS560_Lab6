@@ -13,7 +13,7 @@ Executive::Executive()
 
 Executive::~Executive()
 {
-	//delete bst;
+	delete bst;
 }
 
 void Executive::run()
