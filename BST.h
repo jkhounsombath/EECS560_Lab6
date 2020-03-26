@@ -14,7 +14,7 @@ class BST
 		BST();
 		~BST();
 		void add(int entry);
-		void recAdd(int entry, BNode<int>* curSubTree);
+		void recAdd(int entry, BNode* curSubTree);
 		/*
 		void recDelete(BNode<int>* curTree);
 		BNode<int>* recPrint(BNode<int>* curSubTree);
@@ -23,6 +23,7 @@ class BST
 		BNode<int>* removeHelper(int key, BNode<int>* curSubTree);
 */
 	private:
-		BNode<int>* m_root;
+		int size = 0;
+		BNode* m_root;
 };
 #endif

@@ -4,23 +4,21 @@
 #include <iostream>
 #include <string>
 
-template <typename ItemType>
 class BNode
 {
 	public:
 		BNode();
-		BNode(ItemType entry);
+		BNode(int entry);
 		~BNode();
-		ItemType getEntry() const;
-		BNode<ItemType>* getLeft() const;
-		BNode<ItemType>* getRight() const;
-		void setEntry(ItemType entry);
-		void setLeft(BNode<ItemType>* left);
-		void setRight(BNode<ItemType>* right);
+		int getEntry() const;
+		BNode* getLeft() const;
+		BNode* getRight() const;
+		void setEntry(int entry);
+		void setLeft(BNode* left);
+		void setRight(BNode* right);
 	private:
-		ItemType m_entry;
-		BNode<ItemType>* m_left;
-		BNode<ItemType>* m_right;
+		int m_entry;
+		BNode* m_left;
+		BNode* m_right;
 };
-#include "BNode.cpp"
 #endif

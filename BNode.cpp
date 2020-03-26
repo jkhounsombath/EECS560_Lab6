@@ -1,60 +1,57 @@
 #include "BNode.h"
 
-
-template <typename ItemType>
-BNode<ItemType>::BNode()
+BNode::BNode()
 {
-	m_entry = nullptr;
+	m_entry = 0;
 	m_left = nullptr;
 	m_right = nullptr;
 }
 
-template <typename ItemType>
-BNode<ItemType>::BNode(ItemType entry)
+
+BNode::BNode(int entry)
 {
 	m_entry= entry;
 	m_left= nullptr;
 	m_right= nullptr;
 }
 
-template <typename ItemType>
-BNode<ItemType>::~BNode()
+BNode::~BNode()
 {
 
 }
 
-template <typename ItemType>
-ItemType BNode<ItemType>::getEntry() const
+
+int BNode::getEntry() const
 {
 	return m_entry;
 }
 
-template <typename ItemType>
-BNode<ItemType>* BNode<ItemType>::getLeft() const
+
+BNode* BNode::getLeft() const
 {
 	return m_left;
 }
 
-template <typename ItemType>
-BNode<ItemType>* BNode<ItemType>::getRight() const
+
+BNode* BNode::getRight() const
 {
 	return m_right;
 }
 
-template <typename ItemType>
-void BNode<ItemType>::setEntry(ItemType entry)
+
+void BNode::setEntry(int entry)
 {
 	m_entry= entry;
 }
 
-template <typename ItemType>
-void BNode<ItemType>::setLeft(BNode<ItemType>* left)
+
+void BNode::setLeft(BNode* left)
 {
 	m_left= left;
 }
 
-template <typename ItemType>
-void BNode<ItemType>::setRight(BNode<ItemType>* right)
+
+void BNode::setRight(BNode* right)
 {
 	m_right= right;
 }
