@@ -40,7 +40,7 @@ void BST::recAdd(int entry, BNode<int>* curSubTree)
 	{
 		curSubTree= new BNode<int>(entry);
 	}
-	else if(curSubTree->getEntry() >= entry)
+	else if(curSubTree->getEntry() > entry)
 	{
 		if(curSubTree->getLeft() == nullptr)
 		{
@@ -51,7 +51,7 @@ void BST::recAdd(int entry, BNode<int>* curSubTree)
 			recAdd(entry, curSubTree->getLeft());
 		}
 	}
-	else if(curSubTree->getEntry() < entry)
+	else if(curSubTree->getEntry() <= entry)
 	{
 		if(curSubTree->getRight() == nullptr)
 		{
