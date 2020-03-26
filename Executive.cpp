@@ -54,6 +54,25 @@ void Executive::run()
 		{
 			bst->printLevelOrder();
 		}
+		else if(choice == 5)
+		{
+			bst->spiralOrder();
+		}
+		else if(choice == 6)
+		{
+			bst->leftSideView();
+		}
+		else if(choice == 7)
+		{
+			bst->rightSideView();
+		}
+		else if(choice == 8)
+		{
+			int integer;
+			std::cout<<"Enter a value for k to find the kth smallest value: ";
+			std::cin>>integer;
+			bst->kthSmallestInt(integer);
+		}
 		else if(choice == 9)
 		{
 			std::cout<<"See you later alligator!\n";
@@ -61,7 +80,7 @@ void Executive::run()
 		}
 		else
 		{
-			std::cout<<"Invalid option!\n";
+			std::cout<<"Invalid option! (choose 1-9)\n";
 		}
 	}while(choice != 9);
 }

@@ -5,6 +5,7 @@
 #include<string>
 #include<stdexcept>
 #include<functional>
+#include<stack>
 
 #include "BNode.h"
 
@@ -18,12 +19,20 @@ class BST
 		int getHeight(BNode* curSubTree);
 		void printLevelOrder();
 		void recPrintLevelOrder(BNode* curSubTree, int curLevel);
+		void leftSideView();
+		void leftSideViewHelper(BNode* curSubTree);
+		void rightSideView();
+		void rightSideViewHelper(BNode* curSubTree);
+		void kthSmallestInt(int k);
+		BNode* kthSmallestIntHelper(int k, BNode* curSubTree);
 		void printInOrder();
 		void recPrintInOrder(BNode* curSubTree);
-		void remove(int key); //throws std::runtime_error if not in tree
+		void remove(int key);
 		BNode* removeHelper(int key, BNode* curSubTree);
 		void InorderSuccessor(int integer);
 		BNode* InorderSuccessorHelper(int integer, BNode* curSubTree);
+		void spiralOrder();
+		void spiralOrderHelper(BNode* curSubTree, int curLevel, int direction);
 		BNode* search(int integer);
 		BNode* searchHelper(int integer, BNode* curSubTree);
 		void recDelete(BNode* curSubTree);
