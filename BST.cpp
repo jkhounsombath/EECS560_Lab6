@@ -21,20 +21,9 @@ void BST::add(int entry)
 	}
 	else
 	{
-		//recAdd(entry, m_root);
+		recAdd(entry, m_root);
 	}
 }
-/*
-void BST::recDelete(BNode<int>* curTree)
-{
-	if(curTree != nullptr)
-	{
-		recDelete(curTree->getLeft());
-		recDelete(curTree->getRight());
-		delete curTree;
-	}
-}
-
 void BST::recAdd(int entry, BNode<int>* curSubTree)
 {
 	if(curSubTree == nullptr)
@@ -62,6 +51,17 @@ void BST::recAdd(int entry, BNode<int>* curSubTree)
 		{
 			recAdd(entry, curSubTree->getRight());
 		}
+	}
+}
+
+/*
+void BST::recDelete(BNode<int>* curTree)
+{
+	if(curTree != nullptr)
+	{
+		recDelete(curTree->getLeft());
+		recDelete(curTree->getRight());
+		delete curTree;
 	}
 }
 
