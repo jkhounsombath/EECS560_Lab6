@@ -1,60 +1,33 @@
 #include "BST.h"
 
-template <typename ItemType>
-BST<ItemType>::BST()
+BST::BST()
 {
 	m_root= nullptr;
 }
 
-template <typename ItemType>
-BST<ItemType>::~BST()
+BST::~BST()
 {
-	recDelete(m_root);
+	//recDelete(m_root);
 }
 
-template <typename ItemType>
-void BST<ItemType>::add(ItemType entry)
+void BST::add(int entry)
 {
-	if(contains(entry, m_root))
-	{
-		throw(std::runtime_error("The value is already in our tree!\n"));
-	}
+	std::cout<<"1\n";
 	if(m_root == nullptr)
 	{
-		BNode<ItemType>* newNode= new BNode<ItemType>(entry);
+		std::cout<<"3\n";
+		BNode<int>* newNode= new BNode<int>(entry);
 		m_root= newNode;
 		newNode= nullptr;
-		delete newNode;
 	}
 	else
 	{
-		recAdd(entry, m_root);
+		std::cout<<"2\n";
+		//recAdd(entry, m_root);
 	}
 }
-
-template <typename ItemType>
-bool BST<ItemType>::contains(ItemType Key, BNode<ItemType>* curSubTree)
-{
-	if(curSubTree == nullptr)
-	{
-		return false;
-	}
-	else if(curSubTree->getEntry() == Key)
-	{
-		return(true);
-	}
-	else if(curSubTree->getEntry() > Key)
-	{
-		return(contains(Key, curSubTree->getLeft()));
-	}
-	else if (curSubTree->getEntry() < Key)
-	{
-		return(contains(Key, curSubTree->getRight()));
-	}
-}
-
-template <typename ItemType>
-void BST<ItemType>::recDelete(BNode<ItemType>* curTree)
+/*
+void BST::recDelete(BNode<int>* curTree)
 {
 	if(curTree != nullptr)
 	{
@@ -64,18 +37,17 @@ void BST<ItemType>::recDelete(BNode<ItemType>* curTree)
 	}
 }
 
-template <typename ItemType>
-void BST<ItemType>::recAdd(ItemType entry, BNode<ItemType>* curSubTree)
+void BST::recAdd(int entry, BNode<int>* curSubTree)
 {
 	if(curSubTree == nullptr)
 	{
-		curSubTree= new BNode<ItemType>(entry);
+		curSubTree= new BNode<int>(entry);
 	}
 	else if(curSubTree->getEntry() > entry)
 	{
 		if(curSubTree->getLeft() == nullptr)
 		{
-			curSubTree->setLeft(new BNode<ItemType>(entry));
+			curSubTree->setLeft(new BNode<int>(entry));
 		}
 		else
 		{
@@ -86,7 +58,7 @@ void BST<ItemType>::recAdd(ItemType entry, BNode<ItemType>* curSubTree)
 	{
 		if(curSubTree->getRight() == nullptr)
 		{
-			curSubTree->setRight(new BNode<ItemType>(entry));
+			curSubTree->setRight(new BNode<int>(entry));
 		}
 		else
 		{
@@ -95,33 +67,29 @@ void BST<ItemType>::recAdd(ItemType entry, BNode<ItemType>* curSubTree)
 	}
 }
 
-template <typename ItemType>
-void BST<ItemType>::print()
+void BST::print()
 {
 	recPrint(m_root);
 }
 
-template <typename ItemType>
-BNode<ItemType>* BST<ItemType>::recPrint(BNode<ItemType>* curSubTree)
+BNode<int>* BST::recPrint(BNode<int>* curSubTree)
 {
 	recPrint(curSubTree->getLeft());
 	if(curSubTree!= nullptr)
 	{
-		std::cout<<curSubTree->getEntry().getAmericanName()<< std::endl;
+		std::cout<<curSubTree->getEntry()<< std::endl;
 	}
 	recPrint(curSubTree->getRight());
 	return nullptr;
 }
 
 
-template <typename ItemType>
-void BST<ItemType>::remove(ItemType key)
+void BST::remove(int key)
 {
 	removeHelper(key, m_root);
 }
 
-template <typename ItemType>
-BNode<ItemType>* BST<ItemType>::removeHelper(ItemType entry, BNode<ItemType>* curSubTree)
+BNode<int>* BST::removeHelper(int entry, BNode<int>* curSubTree)
 {
 	if(curSubTree == nullptr)
 	{
@@ -139,17 +107,17 @@ BNode<ItemType>* BST<ItemType>::removeHelper(ItemType entry, BNode<ItemType>* cu
 	{
 		if(curSubTree->getLeft() == nullptr)
 		{
-			BNode<ItemType>* temp = curSubTree->getRight();
+			BNode<int>* temp = curSubTree->getRight();
 			delete curSubTree;
 			return(temp);
 		}
 		else if(curSubTree->getRight() == nullptr)
 		{
-			BNode<ItemType>* temp = curSubTree->getLeft();
+			BNode<int>* temp = curSubTree->getLeft();
 			delete curSubTree;
 			return(temp);
 		}
-		BNode<ItemType>* temp = curSubTree->getRight();
+		BNode<int>* temp = curSubTree->getRight();
 		while(temp->getLeft())
 		{
 			temp = temp->getLeft();
@@ -159,18 +127,4 @@ BNode<ItemType>* BST<ItemType>::removeHelper(ItemType entry, BNode<ItemType>* cu
 	}
 	return(curSubTree);
 }
-
-template <typename ItemType>
-void BST<ItemType>::addRec(BNode<ItemType>* subTree)
-{
-	if(subTree->getLeft() != nullptr)
-	{
-		add(subTree->getLeft()->getEntry());
-		addRec(subTree->getLeft());
-	}
-	if(subTree->getRight() != nullptr)
-	{
-		add(subTree->getRight()->getEntry());
-		addRec(subTree->getRight());
-	}
-}
+*/

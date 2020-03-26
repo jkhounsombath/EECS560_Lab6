@@ -13,8 +13,8 @@ class Executive
 	public:
 		Executive();
 		~Executive();
-		void run(std::string fileName);
+		void run();
 	private:
-		BST<int>* bst;
+		BST* bst;
 };
 #endif

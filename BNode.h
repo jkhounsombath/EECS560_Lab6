@@ -4,10 +4,11 @@
 #include <iostream>
 #include <string>
 
-template typename<ItemType>
+template <typename ItemType>
 class BNode
 {
 	public:
+		BNode();
 		BNode(ItemType entry);
 		~BNode();
 		ItemType getEntry() const;
@@ -21,4 +22,5 @@ class BNode
 		BNode<ItemType>* m_left;
 		BNode<ItemType>* m_right;
 };
+#include "BNode.cpp"
 #endif

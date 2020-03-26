@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-  Executive executive;
-  executive.run(argv[0]);
+  Executive exec;
+  exec.run();
   return(0);
 }

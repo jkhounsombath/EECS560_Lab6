@@ -8,21 +8,21 @@
 
 #include "BNode.h"
 
-template <typename ItemType>
 class BST
 {
 	public:
 		BST();
 		~BST();
-		void add(ItemType entry);
-		bool contains(ItemType Key, BNode<ItemType>* curSubTree);
-		void recAdd(ItemType entry, BNode<ItemType>* curSubTree);
-		void recDelete(BNode<ItemType>* curTree);
-		BNode<ItemType>* recPrint(BNode<ItemType>* curSubTree);
+		void add(int entry);
+		/*
+		void recAdd(int entry, BNode<int>* curSubTree);
+		void recDelete(BNode<int>* curTree);
+		BNode<int>* recPrint(BNode<int>* curSubTree);
 		void print();
-		void remove(ItemType key); //throws std::runtime_error if not in tree
-		BNode<ItemType>* removeHelper(ItemType key, BNode<ItemType>* curSubTree);
+		void remove(int key); //throws std::runtime_error if not in tree
+		BNode<int>* removeHelper(int key, BNode<int>* curSubTree);
+		*/
 	private:
-		BNode<ItemType>* m_root;
+		BNode<int>* m_root;
 };
 #endif

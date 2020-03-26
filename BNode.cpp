@@ -1,5 +1,14 @@
 #include "BNode.h"
 
+
+template <typename ItemType>
+BNode<ItemType>::BNode()
+{
+	m_entry = nullptr;
+	m_left = nullptr;
+	m_right = nullptr;
+}
+
 template <typename ItemType>
 BNode<ItemType>::BNode(ItemType entry)
 {
