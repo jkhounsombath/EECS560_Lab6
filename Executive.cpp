@@ -10,7 +10,10 @@ Executive::Executive()
 		std::cout<<"Adding value: "<<value<<std::endl;
 		bst->add(value);
 	}
-	bst->print();
+	std::cout<<"Inorder print:\n";
+	bst->printInOrder();
+	std::cout<<"LevelOrder print:\n";
+	bst->printLevelOrder();
 }
 
 Executive::~Executive()
@@ -20,5 +23,45 @@ Executive::~Executive()
 
 void Executive::run()
 {
-
+	int choice;
+	do{
+		std::cout << "WELCOME TO JUSTIN'S LAB 6\n------------------------------\n";
+		std::cout << "Choose an option between 1 and 9\n1.) AddItem\n2.) DeleteItem\n3.) InorderSuccessor\n4.) levelOrder\n5.) SpiralLevelOrder\n6.) LeftSideView\n7.) RightSideView\n8.) KthSmallestItem\n9.) Exit\n\n";
+		std::cout << "Choice: ";
+		std::cin>>choice;
+		if(choice == 1)
+		{
+			int integer;
+			std::cout<<"What integer would you like to add: ";
+			std::cin>>integer;
+			bst->add(integer);
+		}
+		else if(choice == 2)
+		{
+			int integer;
+			std::cout<<"What integer would you like to remove: ";
+			std::cin>>integer;
+			bst->remove(integer);
+		}
+		else if(choice == 3)
+		{
+			int integer;
+			std::cout<<"What integer would you like to see the inorder successor of: ";
+			std::cin>>integer;
+			bst->InorderSuccessor(integer);
+		}
+		else if(choice == 4)
+		{
+			bst->printLevelOrder();
+		}
+		else if(choice == 9)
+		{
+			std::cout<<"See you later alligator!\n";
+			break;
+		}
+		else
+		{
+			std::cout<<"Invalid option!\n";
+		}
+	}while(choice != 9);
 }

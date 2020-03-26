@@ -55,3 +55,8 @@ void BNode::setRight(BNode* right)
 {
 	m_right= right;
 }
+
+bool BNode::isLeaf()
+{
+	return(m_left == nullptr && m_right == nullptr);
+}

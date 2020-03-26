@@ -16,6 +16,7 @@ class BNode
 		void setEntry(int entry);
 		void setLeft(BNode* left);
 		void setRight(BNode* right);
+		bool isLeaf();
 	private:
 		int m_entry;
 		BNode* m_left;

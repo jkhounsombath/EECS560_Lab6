@@ -8,7 +8,7 @@ BST::BST()
 
 BST::~BST()
 {
-	//recDelete(m_root);
+	recDelete(m_root);
 }
 
 void BST::add(int entry)
@@ -55,30 +55,69 @@ void BST::recAdd(int entry, BNode* curSubTree)
 	}
 }
 
-void BST::print()
+int BST::getHeight(BNode* curSubTree)
 {
-	recPrint(m_root);
-}
-
-BNode* BST::recPrint(BNode* curSubTree)
-{
-	recPrint(curSubTree->getLeft());
-	if(curSubTree!= nullptr)
+	if(curSubTree == nullptr)
 	{
-		std::cout<<curSubTree->getEntry()<< std::endl;
+		return 0;
 	}
-	recPrint(curSubTree->getRight());
-	return nullptr;
+	else
+	{
+		int LHeight = getHeight(curSubTree->getLeft());
+		int RHeight = getHeight(curSubTree->getRight());
+		if(LHeight > RHeight)
+		{
+			return(LHeight + 1);
+		}
+		else
+		{
+			return(RHeight + 1);
+		}
+	}
 }
 
-/*
-void BST::recDelete(BNode<int>* curTree)
+void BST::printLevelOrder()
 {
-	if(curTree != nullptr)
+	for(int i = 0; i < getHeight(m_root); i++)
 	{
-		recDelete(curTree->getLeft());
-		recDelete(curTree->getRight());
-		delete curTree;
+		recPrintLevelOrder(m_root, i);
+		std::cout<<std::endl;
+	}
+}
+
+void BST::recPrintLevelOrder(BNode* curSubTree, int curLevel)
+{
+	if(curSubTree == nullptr)
+	{
+		return;
+	}
+	else if(curLevel == 0)
+	{
+		std::cout<<curSubTree->getEntry()<<" ";
+	}
+	else
+	{
+		recPrintLevelOrder(curSubTree->getLeft(), curLevel-1);
+		recPrintLevelOrder(curSubTree->getRight(), curLevel-1);
+	}
+}
+
+void BST::printInOrder()
+{
+	recPrintInOrder(m_root);
+}
+
+void BST::recPrintInOrder(BNode* curSubTree)
+{
+	if(curSubTree != nullptr)
+	{
+		recPrintInOrder(curSubTree->getLeft());
+		std::cout<<curSubTree->getEntry()<<std::endl;
+		recPrintInOrder(curSubTree->getRight());
+	}
+	else
+	{
+		return;
 	}
 }
 
@@ -87,11 +126,11 @@ void BST::remove(int key)
 	removeHelper(key, m_root);
 }
 
-BNode<int>* BST::removeHelper(int entry, BNode<int>* curSubTree)
+BNode* BST::removeHelper(int entry, BNode* curSubTree)
 {
 	if(curSubTree == nullptr)
 	{
-		throw std::runtime_error("Value is not in the tree\n");
+		return curSubTree;
 	}
 	if(curSubTree->getEntry() < entry)
 	{
@@ -105,18 +144,18 @@ BNode<int>* BST::removeHelper(int entry, BNode<int>* curSubTree)
 	{
 		if(curSubTree->getLeft() == nullptr)
 		{
-			BNode<int>* temp = curSubTree->getRight();
+			BNode* temp = curSubTree->getRight();
 			delete curSubTree;
 			return(temp);
 		}
 		else if(curSubTree->getRight() == nullptr)
 		{
-			BNode<int>* temp = curSubTree->getLeft();
+			BNode* temp = curSubTree->getLeft();
 			delete curSubTree;
 			return(temp);
 		}
-		BNode<int>* temp = curSubTree->getRight();
-		while(temp->getLeft())
+		BNode* temp = curSubTree->getRight();
+		while(temp != nullptr && temp->getLeft() != nullptr)
 		{
 			temp = temp->getLeft();
 		}
@@ -125,4 +164,78 @@ BNode<int>* BST::removeHelper(int entry, BNode<int>* curSubTree)
 	}
 	return(curSubTree);
 }
-*/
+
+void BST::InorderSuccessor(int integer)
+{
+	std::cout<<"The inorder successor of "<<integer<<" is "<<InorderSuccessorHelper(integer, m_root)->getEntry()<<std::endl;
+}
+
+BNode* BST::InorderSuccessorHelper(int integer, BNode* curSubTree)
+{
+	BNode* temp = search(integer);
+	if(temp->getRight() != nullptr)
+	{
+		temp= temp->getRight();
+		while(temp->getLeft() != nullptr)
+		{
+			temp= temp->getLeft();
+		}
+		return temp;
+	}
+	BNode* temp2 = nullptr;
+	while (curSubTree != nullptr)
+	{
+		if(integer < curSubTree->getEntry())
+		{
+			temp2 = curSubTree;
+			curSubTree= curSubTree->getLeft();
+		}
+		else if(temp->getEntry() > curSubTree->getEntry())
+		{
+				curSubTree = curSubTree->getRight();
+		}
+		else
+			break;
+	}
+	return temp2;
+}
+
+BNode* BST::search(int integer)
+{
+	return (searchHelper(integer, m_root));
+}
+
+BNode* BST::searchHelper(int integer, BNode* curSubTree)
+{
+	if(curSubTree == nullptr)
+	{
+		std::cout<< "The integer is not in the int tree!\n";
+	}
+	else if(curSubTree->getEntry() == integer)
+	{
+		return curSubTree;
+	}
+	else if(integer < m_root->getEntry())
+	{
+		return(searchHelper(integer, curSubTree->getLeft()));
+	}
+	else if(integer > m_root->getEntry())
+	{
+		return(searchHelper(integer, curSubTree->getLeft()));
+	}
+	else
+	{
+		std::cout<<"The value was not in the tree!\n";
+	}
+	return nullptr;
+}
+
+void BST::recDelete(BNode* curSubTree)
+{
+	if(curSubTree != nullptr)
+	{
+		recDelete(curSubTree->getLeft());
+		recDelete(curSubTree->getRight());
+		delete curSubTree;
+	}
+}
