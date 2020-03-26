@@ -209,25 +209,26 @@ BNode* BST::searchHelper(int integer, BNode* curSubTree)
 {
 	if(curSubTree == nullptr)
 	{
-		std::cout<< "The integer is not in the int tree!\n";
+		std::cout<< "The integer is not in the tree!\n";
+		return nullptr;
 	}
 	else if(curSubTree->getEntry() == integer)
 	{
 		return curSubTree;
 	}
-	else if(integer < m_root->getEntry())
+	else if(integer < curSubTree->getEntry())
 	{
 		return(searchHelper(integer, curSubTree->getLeft()));
 	}
-	else if(integer > m_root->getEntry())
+	else if(integer > curSubTree->getEntry())
 	{
-		return(searchHelper(integer, curSubTree->getLeft()));
+		return(searchHelper(integer, curSubTree->getRight()));
 	}
 	else
 	{
-		std::cout<<"The value was not in the tree!\n";
+		std::cout<<"The integer was not in the tree!\n";
+		return nullptr;
 	}
-	return nullptr;
 }
 
 void BST::recDelete(BNode* curSubTree)

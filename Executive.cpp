@@ -24,8 +24,8 @@ Executive::~Executive()
 void Executive::run()
 {
 	int choice;
+	std::cout << "WELCOME TO JUSTIN'S LAB 6\n------------------------------\n";
 	do{
-		std::cout << "WELCOME TO JUSTIN'S LAB 6\n------------------------------\n";
 		std::cout << "Choose an option between 1 and 9\n1.) AddItem\n2.) DeleteItem\n3.) InorderSuccessor\n4.) levelOrder\n5.) SpiralLevelOrder\n6.) LeftSideView\n7.) RightSideView\n8.) KthSmallestItem\n9.) Exit\n\n";
 		std::cout << "Choice: ";
 		std::cin>>choice;
